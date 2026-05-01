@@ -10,6 +10,7 @@ Shallow Copy: A shallow copy creates a new object but copies the references to t
 The Destructor of Objects is executed in reverse order because when an object of a class is created, the constructor is called first, and when the object goes out of scope or is explicitly deleted, the destructor is called. Since objects are destroyed in the reverse order of their creation, the destructors are also called in reverse order. This ensures that any dependencies or resources held by the objects are properly released in a safe manner.
 
 */
+/*
 class Demo {
 public:
     int* data;
@@ -39,6 +40,7 @@ public:
         delete data;
     }
 };
+*/
 //2 
 #include <iostream>
 using namespace std;
