@@ -44,5 +44,42 @@ Constraints:
 -109 <= nums[i] <= 109
 0 <= target <= 2 * 109
 
+TC: O(n^2) SC: O(n)
+Leetocde - 2770, Medium Level
+Maximum numbers of jumps to reach th last index of array.
 
 */
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <climits>
+#include <cmath>
+#include <bits/stdc++.h>
+
+using namespace std;
+int maximumJumps(vector<int>& nums, int target) {
+    int n = nums.size();
+    vector<int> dp(n, -1);
+    dp[0] = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (dp[i] != -1 && abs(nums[j] - nums[i]) <= target) {
+                dp[j] = max(dp[j], dp[i] + 1);
+            }
+        }
+    }
+    return dp[n - 1];
+}
+int main () {
+    int n;
+    cin >> n;
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+    int target;
+    cin >> target;
+    int ans = maximumJumps(nums, target);
+    cout << ans;
+    return 0;
+}
