@@ -78,15 +78,15 @@ int main() {
     Solution sol;
     vector<int> arr1 = {4,2,3,0,3,1,2};
     int start1 = 5;
-    cout << boolalpha << sol.canReach(arr1, start1) << endl; // Output: true
+    cout << boolalpha << sol.canReach(arr1, start1) << endl;
 
     vector<int> arr2 = {4,2,3,0,3,1,2};
     int start2 = 0;
-    cout << boolalpha << sol.canReach(arr2, start2) << endl; // Output: true
+    cout << boolalpha << sol.canReach(arr2, start2) << endl; 
 
     vector<int> arr3 = {3,0,2,1,2};
     int start3 = 2;
-    cout << boolalpha << sol.canReach(arr3, start3) << endl; // Output: false
+    cout << boolalpha << sol.canReach(arr3, start3) << endl; 
 
     return 0;
 }
