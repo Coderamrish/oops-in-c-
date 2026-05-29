@@ -1,29 +1,28 @@
 #include<iostream>
-#include <vector>
-#include<algorithm>
+#include<vector>
+#include<climits>
 using namespace std;
-int partitionArray(vector<int> arr) {
-    int n = arr.size();
-    int cnt = 0;
-    int toggle = 0;
-    for (int x : arr)
- {
-    if (x == 0) {
-        cnt++;
-    } else {
-        toggle = min(toggle + 1, cnt);
+int digitSum(int n) {
+    int sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
     }
+    return sum;
 }
-    return toggle;
- }
- int main() 
- {
+int minElement(vector<int>& nums) {
+    int ans = INT_MAX;
+    for (int num: nums) {
+        ans = min(ans, digitSum(num));
+    }
+    return ans;
+}
+int main() {
     int n;
     cin >> n;
-    vector<int> arr(n);
+    vector<int> nums(n);
     for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+        cin >> nums[i];
     }
-    cout << partitionArray(arr) << endl;
-    return 0;
- }
+    cout << minElement(nums) << endl;
+}
