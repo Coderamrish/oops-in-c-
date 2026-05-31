@@ -1,28 +1,31 @@
 #include<iostream>
+#include<cmath>
 #include<vector>
 #include<climits>
 using namespace std;
-int digitSum(int n) {
-    int sum = 0;
-    while (n > 0) {
-        sum += n % 10;
-        n /= 10;
+bool isSumOfConsecutive(int n) {
+    for(int i = 1; i < n; i++) {
+        int sum = 0;
+        for(int j = i; j < n; j++) {
+            sum += j;
+            if (sum == n && j > i) {
+                return true;
+            }
+            if(sum > 0) {
+                break;
+            }
+        }
     }
-    return sum;
-}
-int minElement(vector<int>& nums) {
-    int ans = INT_MAX;
-    for (int num: nums) {
-        ans = min(ans, digitSum(num));
-    }
-    return ans;
+    return false;
 }
 int main() {
-    int n;
+    int n; 
     cin >> n;
-    vector<int> nums(n);
-    for (int i = 0; i < n; i++) {
-        cin >> nums[i];
+    if(isSumOfConsecutive(n)) {
+        cout << "true";
+
+    } else {
+        cout << "false";
     }
-    cout << minElement(nums) << endl;
+    return 0;
 }
