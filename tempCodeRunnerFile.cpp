@@ -1,31 +1,29 @@
 #include<iostream>
-#include<cmath>
 #include<vector>
-#include<climits>
+#include<string>
+#include<algorithm>
+#include <climits>
 using namespace std;
-bool isSumOfConsecutive(int n) {
-    for(int i = 1; i < n; i++) {
-        int sum = 0;
-        for(int j = i; j < n; j++) {
-            sum += j;
-            if (sum == n && j > i) {
-                return true;
-            }
-            if(sum > 0) {
-                break;
-            }
-        }
+int maxSubstring(string s) {
+    int n = s.size();
+    int maxDiff = INT_MIN;
+for(int i = 0; i < n; i++) {
+    int cnt0 = 0, cnt1 = 0;
+    for(int j = i; j < n; j++) {
+        if(s[j] == '0') cnt0++;
+        else cnt1++;
+        int diff = cnt0 - cnt1;
+        maxDiff = max(maxDiff,diff);
+
     }
-    return false;
+}
+return (maxDiff <=0) ? -1 : maxDiff;
 }
 int main() {
-    int n; 
+    int n;
     cin >> n;
-    if(isSumOfConsecutive(n)) {
-        cout << "true";
-
-    } else {
-        cout << "false";
-    }
+    string s;
+    cin >> s;
+    cout << maxSubstring(s) << endl;
     return 0;
 }
